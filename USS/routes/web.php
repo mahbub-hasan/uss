@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::post('/odd_even','LoginController@doCalculation');
+Route::post('/do_login','LoginController@doLogin');

@@ -1,60 +1,38 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>USS</title>
+@extends('master')
 
-    <!-- For CSS -->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+@section('container')
+    <form action={{ url('do_login') }} method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="card">
+                @if($errors->count()>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="row" style="padding: 10px">
+                    <div class="card-content black-text">
+                        <span class="card-title">Login Panel</span>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="username" type="text" class="validate" name="username">
+                        <label for="username">UserName</label>
+                    </div>
 
-    <!-- For JS -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+                    <div class="input-field col s12">
+                        <input  id="password" type="password" class="validate" name="password">
+                        <label for="password">Password</label>
+                    </div>
 
-    <!-- Custom CSS -->
-    <style type="text/css">
-        body{
-            background: #FFFFFF;
-        }
-    </style>
-</head>
-<body>
-<form action={{ url('odd_even') }} method="post" enctype="multipart/form-data">
-    <div style="width: 50%; padding: 10px">
-        <input type="text" name="algorithm" placeholder="Enter a number"><br>
-        <button name="Calculate">Calculate</button>
-    </div>
-    <br>
-    <br>
-    <div style="width: 50%; padding: 10px">
-        <span>Output: </span>
-    </div>
-
-
-
-
-
-<!-- <div class="menu_bar">
-        <ul>
-            <li>Logo</li>
-            <li>Login</li>
-        </ul>
-    </div>
-    <div style="border: solid; margin-left: 10px">
-        @for($i = 0;$i<10; $i++)
-            <div>{{ $i }}</div>
-        @endfor
-    </div>
-    <div class="login_panel">
-        <span class="title">Login First</span>
-        <input type="text" name="username" placeholder="UserName">
-        <input type="password" name="password" placeholder="Password">
-        <button name="Login" title="Login">Login</button>
-    </div> -->
-</form>
-</body>
-</html>
+                    <div class="col s12 right">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+@endsection
