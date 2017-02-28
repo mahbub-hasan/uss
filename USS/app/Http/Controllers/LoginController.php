@@ -14,14 +14,15 @@ class LoginController extends Controller
             'username' => 'required',
             'password' => 'required|min:8'
         ]);
-        $username = $request->input('username');
-        $password = $request->input('password');
-        if(!empty($username) && !empty($password)){
-            // continue
+        if(!$validation->fails()){
+            $username = $request->input('username');
+            $password = $request->input('password');
+            // check with database
+
+            // return after successfully login
+            return Redirect::to('/userinfo_view');
         }else{
-            // return to view with error message
             return Redirect::to('/')->withErrors($validation);
-           // return view('login', ['error_info'=>'Please fill-up required fields.']);
         }
     }
 }

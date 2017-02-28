@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::post('/do_login','LoginController@doLogin');
+Route::get('/add_new','UserInfoController@showAddNewUserView');
+Route::get('/userinfo_view','UserInfoController@showAddNewUserView');
+
